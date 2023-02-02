@@ -1,5 +1,5 @@
 .reserve {
-    padding: 62px 124px;
+    padding: 62px 0 124px;
 }
 .reserve__title {
     font-weight: 400;
@@ -23,6 +23,7 @@
 
 .reserve__form-container {
     margin-bottom: 40px;
+    
 
 }
 .reserve__fieldset {
@@ -38,7 +39,7 @@
     margin-bottom: 0;
 }
 
-.reserve-legend {
+.reserve_legend {
     flex-basis: 100%;
     font-weight: 400;
     font-size: 22px;
