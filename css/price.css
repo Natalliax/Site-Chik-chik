@@ -24,12 +24,12 @@
 .price__content {
     flex-basis: 50%;
 }
-.prise__list {
+.price__list {
     padding: 0;
     margin: 0 0 62px;
     list-style: none;
 }
-.prise__item {
+.price__item {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
@@ -40,14 +40,14 @@
     margin-bottom: 24px;
 }
 
-.prise__item:last-child {
+.price__item:last-child {
     margin-bottom: 0;
 }
-.prise__item-title {
+.price__item-title {
     text-transform: uppercase;  
 }
 
-.prise__item-count {
+.price__item-count {
     white-space: nowrap;
 }
 
@@ -65,10 +65,10 @@
     .price__content {
         flex-basis: 100%;
     }
-    .prise__list {
+    .price__list {
         margin-bottom: 40px;
     }
-    .prise__item-count {
+    .price__item-count {
         white-space: nowrap;
     }
 }
@@ -85,10 +85,10 @@
         font-size: 12px;
         margin-bottom: 24px;
     }
-    .prise__list {
+    .price__list {
         margin-bottom: 24px;
     }
-    .prise__item {
+    .price__item {
         font-size: 12px;
         line-height: 1.2;
         padding-bottom: 6px;
