@@ -1,16 +1,13 @@
-const API_URL = 'https://toothsome-laser-rifle-glitch.me/api';
+const API_URL = 'https://booming-factual-spectacles.glitch.me/api';
 
 /*
 GET /api - получить список услуг
 GET /api?service={n} - получить список барберов
 GET /api?spec={n} - получить список месяца работы барбера
 GET /api?spec={n}&month={n} - получить список дней работы барбера
-GET /api?spec={n}&month={n}&day={n} - получить список дней работы барбера
-GET /api/order - оформить заказ
+GET /api?spec={n}&month={n}&day={n} - получить список свободных часов барбера
+POST /api/order - оформить заказ
 */
-
-
-
 
 const addPreload = (elem) => {
     elem.classList.add('preload')
@@ -103,25 +100,91 @@ const initSlider = () => {
     
 });
 };
-initSlider();
+
+const renderPrice = (wrapper, data) => {
+    data.forEach((item) => {
+        const priceItem = document.createElement('li');
+        priceItem.classList.add('price_item');
+
+        priceItem.innerHTML = `
+        <span class="price__item-title">${item.name}</span>
+        <span class="price__item-count">${item.price}руб</span>`;
+    
+        wrapper.append(priceItem)   
+    });
+};
+
+const renderService = (wrapper, data) => {
+    const labels = data.map(item => {
+        const label = document.createElement('label')
+        label.classList.add('radio');
+        label.innerHTML =`
+        <input class="radio__input" type="radio" name="service" value="${item.id}"> 
+        <span class="radio__label">${item.name}</span>
+        `;
+        return label;
+    })
+
+    wrapper.append(...labels);
+}
 
 const initService = () => {
     const priceList = document.querySelector('.price__list');
+    const reserveFieldsetService = document.querySelector('.reserve__fieldset_service');
     priceList.textContent = ''; 
-    
     addPreload(priceList);
 
+    reserveFieldsetService.innerHTML = 
+        '<legend class="reserve__legend">Услуга</legend>';
+    addPreload(reserveFieldsetService);
+
     fetch(API_URL)
-    .then(response => response.json())
-    .then(data => {
-        rendarPrice(priceList, data)
+        .then(response => response.json())
+        .then(data => {
+        renderPrice(priceList, data);
+        removePreload(priceList);
+        return data;
     })  
+    .then(data => {
+        renderService(reserveFieldsetService, data);
+        removePreload(reserveFieldsetService);
+    })
     };
+
+    const addDisabled = (arr) => {
+        arr.forEach((elem) => {
+            elem.disabled = false
+        });
+
+    }
+    const removeDisabled = (arr) => {
+        arr.forEach((elem) => {
+            elem.disabled = false
+        });
+    }
+
+    const initReserve = () => {
+const reserveForm = document.querySelector('.reserve__form');
+const { fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn} = reserveForm;
+
+addDisabled([fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn]);
+
+reserveForm.addEventListener ('change', async event  => {
+    const target = event.target;
+
+
+    if (target.name === 'service') {
+        const response = await fetch (`${API_URL}/?service={${target.value}}`)
+        const data = await response.json();
+    }
+})
+};
 
 const init = () =>{
     initSlider();
     initService();
-}
-window.addEventListener('DOMContentLoaded', initSlider);
+    initReserve();
+};
+window.addEventListener('DOMContentLoaded', init);
 
 
