@@ -39,23 +39,20 @@
                         <li class="navigation__item">
                             <a href="#about" class="navigation__link">o нас</a>
                         </li>
-
                     </ul>
-
                 </nav>
-
                 <a href="#reserve" class="header__link main-link">Записаться</a>
             </div>
         </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1 class="hero__title">
-                    <span class="visually-hidden"> Барбершоп Chik-chik</span>
-                    <span>Мы создаём искусство, которое не стыдно показать</span>
-                </h1>
+<main>
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero__title">
+                <span class="visually-hidden"> Барбершоп Chik-chik</span>
+                <span>Мы создаём искусство, которое не стыдно показать</span>
+            </h1>
                 <div class="hero__slider slider">
                     <div class="slider__container">
                         <ul class="slider__list">
@@ -88,7 +85,6 @@
                         <button class="slider__arrow slider__arrow_left" aria-label="предыдущий слайд"></button>
                         <button class="slider__arrow slider__arrow_right" aria-label="следующий слайд"></button>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -252,9 +248,9 @@
                         </label>
                     </fieldset>
 
-                    <fieldset class="reserve__fieldset" name="fieldmonth">
+                    <fieldset class="reserve__fieldset" name="fielddata">
                         <legend class="reserve_legend">Дата и время</legend>
-                        <fieldset class="reserve__fieldset reserve__fieldset_sub">
+                        <fieldset class="reserve__fieldset reserve__fieldset_sub" name="fieldmonth">
 
                             <label class="radio">
                                 <input class="radio__input" type="radio" name="month">
@@ -325,10 +321,10 @@
                     </fieldset>
                 </div>
 
-                <button class="reserve__btn main-link" name="btn">Записаться</button>
+                <button class="reserve__btn main-link disabled" id="btn">Записаться</button>
 
             </form>
-
+        </div>
         </section>
     </main>
 
